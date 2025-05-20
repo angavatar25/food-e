@@ -2,11 +2,13 @@ import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 
 import Register from "./pages/Register";
 import GetStarted from "./pages/GetStarted";
+import PassRecovery from "./pages/PassRecovery";
 
 const AppRouter = () => {
   let routes = useRoutes([
     { path: '/', element: <GetStarted/> },
     { path: '/register', element: <Register/> },
+    { path: '/pass-recovery', element: <PassRecovery/> },
   ]);
 
   return routes;

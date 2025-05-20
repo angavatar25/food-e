@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'; // Optional: If using React Router
+import { Link } from 'react-router-dom';
+
+import { Eye, EyeOff } from 'lucide-react';
+
+import CloseIcon from "../../assets/icons/Close.svg";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -8,7 +12,7 @@ const Register = () => {
     <div className="min-h-screen px-6 py-8 flex flex-col bg-white">
       {/* Close button */}
       <button className="self-start mb-6 text-black">
-        Close
+        <img src={CloseIcon} alt="" />
       </button>
 
       {/* Title */}
@@ -47,7 +51,7 @@ const Register = () => {
         </div>
 
         {/* Password */}
-        {/* <div>
+        <div>
           <label className="text-xs font-semibold text-teal-500 uppercase">Password</label>
           <div className="mt-1 w-full flex items-center rounded-full px-4 py-2 bg-gray-100">
             <input
@@ -63,7 +67,7 @@ const Register = () => {
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
           </div>
-        </div> */}
+        </div>
 
         {/* Register Button */}
         <button
