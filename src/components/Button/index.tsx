@@ -3,13 +3,14 @@ interface TButton {
   bgColor?: string;
   textColor?: string;
   bordered?: boolean;
+  action: () => void;
 }
 
 const Button = (props: TButton) => {
   const { bgColor: bgColorProps, textColor: textColorProps, bordered } = props;
 
   const customClass = () => {
-    const initial = [];
+    const initial = ['w-full', 'py-3', 'font-bold', 'rounded-full', 'shadow-md', 'outline-none', 'font-bebas'];
 
     if (bgColorProps) {
       initial.push(bgColorProps)
@@ -31,7 +32,7 @@ const Button = (props: TButton) => {
   };
  
   return (
-    <button className={`w-full py-3 ${customClass()} font-bold rounded-full shadow-md outline-none font-bebas`}>
+    <button className={`${customClass()}`} onClick={props.action}>
       {props.text}
     </button>
   )

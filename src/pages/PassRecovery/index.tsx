@@ -4,7 +4,7 @@ import CloseIcon from "../../assets/icons/Close.svg";
 const PassRecovery = () => {
   const [counter, setCounter] = useState(60);
   
-  const [emailSent] = useState(true);
+  const [emailSent] = useState(false);
 
   const userEmail = "donbosco@gmail.com";
 

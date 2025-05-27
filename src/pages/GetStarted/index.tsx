@@ -1,6 +1,17 @@
+import { useNavigate } from "react-router";
 import Button from "../../components/Button";
 
 const GetStarted = () => {
+  const navigate = useNavigate();
+
+  const redirectToRegister = () => {
+    navigate('/register');
+  };
+
+  const redirectToLogin = () => {
+    navigate('/login');
+  };
+
   return (
     <div className="min-h-screen flex flex-col justify-between items-center bg-white px-6 py-10">
       {/* Header */}
@@ -21,11 +32,13 @@ const GetStarted = () => {
       {/* Buttons */}
       <div className="w-full flex flex-col gap-4 mt-20">
         <Button
+          action={redirectToLogin}
           text="LOGIN"
           bgColor="bg-teal-400"
           textColor="text-white"
         />
         <Button
+          action={redirectToRegister}
           text="REGISTER"
           bordered={true}
         />

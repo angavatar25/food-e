@@ -1,14 +1,10 @@
 import { useState } from "react";
-
+import CloseIcon from "../../assets/icons/Close.svg";
 import { Eye, EyeOff } from "lucide-react";
 
-import CloseIcon from "../../assets/icons/Close.svg";
-import { Link, useNavigate } from "react-router";
-
-const Login = () => {
+const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
-  
-  const navigate = useNavigate();
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
     <div className="min-h-screen px-6 py-8 flex flex-col bg-white">
@@ -18,19 +14,10 @@ const Login = () => {
       </button>
 
       {/* Title */}
-      <h1 className="text-3xl font-bold mb-8 font-bebas">Login</h1>
+      <h1 className="text-3xl font-bold mb-8 font-bebas">Reset Password</h1>
 
       {/* Form */}
       <form className="flex flex-col gap-4">
-        {/* Email */}
-        <div className="w-full">
-          <label className="font-semibold text-teal-500 uppercase font-bebas">Email</label>
-          <input
-            type="email"
-            placeholder="johndoe@email.com"
-            className="mt-1 w-full rounded-full px-4 py-2 bg-gray-100 outline-none"
-          />
-        </div>
         {/* Password */}
         <div>
           <label className="text-sm font-semibold text-teal-500 uppercase font-bebas">New Password</label>
@@ -50,22 +37,34 @@ const Login = () => {
           </div>
         </div>
 
+        <div>
+          <label className="text-sm font-semibold text-teal-500 uppercase font-bebas">Confirm Password</label>
+          <div className="mt-1 w-full flex items-center rounded-full px-4 py-2 bg-gray-100">
+            <input
+              type={showConfirmPassword ? 'text' : 'password'}
+              placeholder="Password"
+              className="w-full bg-transparent outline-none"
+            />
+            <button
+              type="button"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              className="text-gray-400"
+            >
+              {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          </div>
+        </div>
+
         {/* Register Button */}
         <button
           type="submit"
           className="mt-6 text-xl w-full bg-teal-500 text-white font-bold rounded-full py-2 font-bebas"
         >
-          Login
+          Reset Password
         </button>
       </form>
-      <p className="mt-6 text-center text-sm text-gray-600">
-        Don't have an account?{' '}
-        <Link to="/register" className="text-orange-500 font-semibold">
-          Register
-        </Link>
-      </p>
     </div>
   )
 };
 
-export default Login;
+export default ResetPassword;

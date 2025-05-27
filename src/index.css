@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 body {
-  @apply max-w-[500px] mx-auto bg-gray-200;
+  @apply bg-gray-200;
   font-family: 'Poppins', -apple-system, 'Bebas Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
