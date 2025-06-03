@@ -10,6 +10,10 @@ import FoodDetail from "./pages/FoodDetail";
 
 import NavigationBar from "./components/NavigationBar";
 import { AnimatePresence } from "framer-motion";
+import SearchFood from "./pages/SearchFood";
+import Basket from "./pages/Basket";
+import Liked from "./pages/Liked";
+import Checkout from "./pages/Checkout";
 
 const isAuth = true;
 
@@ -27,7 +31,11 @@ const AppRouter = () => {
   if (isAuth) {
     routesPath = [
       { path: '/', element: <Home/> },
+      { path: '/search', element: <SearchFood/> },
       { path: '/food-detail', element: <FoodDetail/> },
+      { path: '/cart', element: <Basket/> },
+      { path: '/liked', element: <Liked/> },
+      { path: '/checkout', element: <Checkout/> },
     ];
   }
 
