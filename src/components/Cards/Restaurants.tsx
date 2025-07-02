@@ -1,9 +1,7 @@
-import RestaurantIcon from "../../assets/images/Logo.svg";
-
-const Restaurant = () => {
+const Restaurant = ({ icon }: { icon: string }) => {
   return (
-    <div className="bg-white shadow-xl max-w-28 min-h-28 h-full rounded-xl flex items-center justify-center">
-      <img src={RestaurantIcon} alt="" />
+    <div className="bg-white shadow-xl w-full p-3 min-h-28 h-full rounded-xl flex items-center justify-center">
+      <img src={icon} alt="" />
     </div>
   )
 };

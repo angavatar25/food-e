@@ -1,11 +1,11 @@
 import { Trash, ShoppingBasket as BasketIcon } from "lucide-react";
 
 interface TCart {
-  id: number;
+  id: string;
   image: string;
   name: string;
   price: number;
-  quantity: number;
+  quantity?: number;
   isLiked?: boolean;
 }
 

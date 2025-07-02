@@ -6,7 +6,7 @@ import { ReactComponent as UserIcon } from '../../assets/icons/User.svg';
 import { useNavigate } from 'react-router';
 
 const menuNav = [
-  { id: 1, path: '', Icon: HomeIcon },
+  { id: 1, path: 'home', Icon: HomeIcon },
   { id: 2, path: 'search', Icon: SearchIcon },
   { id: 3, path: 'cart', Icon: BasketIcon },
   { id: 4, path: 'liked', Icon: HeartIcon },

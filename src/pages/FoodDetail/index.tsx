@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router";
 
 import { ChevronLeft, MoreVertical, Minus, Plus, Clock } from "lucide-react";
 
@@ -8,6 +9,7 @@ import FirstImage from "../../assets/images/salmon-1.png";
 import SecondImage from "../../assets/images/salmon-2.png";
 import ThirdImage from "../../assets/images/salmon-3.png"
 import Button from "../../components/Button";
+import { slideLeftVariants } from "../../framer/animation";
 
 const images = [
   FirstImage,
@@ -15,30 +17,9 @@ const images = [
   ThirdImage,
 ];
 
-const slideLeftVariants = {
-  initial: {
-    x: '10%',
-    opacity: 0,
-  },
-  animate: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.4,
-      ease: 'easeIn',
-    },
-  },
-  exit: {
-    x: '-10%',
-    opacity: 0,
-    transition: {
-      duration: 0.4,
-      ease: 'easeInOut',
-    },
-  },
-};
-
 const FoodDetail = () => {
+  const navigate = useNavigate();
+
   const [currentImage, setCurrentImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
 
@@ -50,6 +31,10 @@ const FoodDetail = () => {
   };
 
   const total = (15.0 * quantity).toFixed(2);
+
+  const redirectBack = () => {
+    navigate(-1);
+  };
 
   return (
     <motion.div
@@ -75,10 +60,16 @@ const FoodDetail = () => {
               ))}
             </div>
           </div>
-          <div className="absolute top-4 left-4 bg-white p-2 rounded-full shadow">
+          <button
+            onClick={redirectBack}
+            className="absolute top-4 left-4 bg-white p-2 rounded-full shadow"
+          >
             <ChevronLeft size={20} />
-          </div>
-          <div className="absolute top-4 right-4 bg-white p-2 rounded-full shadow">
+          </button>
+          <div
+            onClick={redirectBack}
+            className="absolute top-4 right-4 bg-white p-2 rounded-full shadow"
+          >
             <MoreVertical size={20} />
           </div>
           <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">

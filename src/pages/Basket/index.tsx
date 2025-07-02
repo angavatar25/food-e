@@ -1,5 +1,8 @@
+import { motion } from "framer-motion";
+
 import Button from "../../components/Button";
 import Cart from "../../components/Cart";
+import { pageVariants } from "../../framer/animation";
 
 const basketItems = [
   {
@@ -27,33 +30,41 @@ const Basket = () => {
   );
 
   return (
-    <div className="min-h-screen mx-auto p-6 bg-white">
-      <h2 className="text-4xl font-bold mb-4 font-bebas">BASKET</h2>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageVariants}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="min-h-screen mx-auto p-6 bg-white">
+        <h2 className="text-4xl font-bold mb-4 font-bebas">BASKET</h2>
 
-      {basketItems.map((item) => (
-        <Cart
-          id={item.id}
-          image={item.image}
-          name={item.name}
-          price={item.price}
-          quantity={item.quantity}
-        />
-      ))}
+        {/* {basketItems.map((item) => (
+          <Cart
+            id={item.id}
+            image={item.image}
+            name={item.name}
+            price={item.price}
+            quantity={item.quantity}
+          />
+        ))} */}
 
-      <div className="mt-6 text-left font-bebas">
-        <p className="font-semibold">TOTAL</p>
-        <p className="text-orange-500 text-4xl font-bold">${total.toFixed(2)}</p>
+        <div className="mt-6 text-left font-bebas">
+          <p className="font-semibold">TOTAL</p>
+          <p className="text-orange-500 text-4xl font-bold">${total.toFixed(2)}</p>
+        </div>
+
+        <div className="mt-10">
+          <Button
+            text="Proceed to checkout"
+            action={() => console.log("heheh")}
+            bgColor="bg-teal-400"
+            textColor="text-white"
+          />
+        </div>
       </div>
-
-      <div className="mt-10">
-        <Button
-          text="Proceed to checkout"
-          action={() => console.log("heheh")}
-          bgColor="bg-teal-400"
-          textColor="text-white"
-        />
-      </div>
-    </div>
+    </motion.div>
   )
 };
 

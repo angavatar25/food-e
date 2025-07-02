@@ -1,5 +1,9 @@
-import Button from "../../components/Button";
+import { motion } from "framer-motion";
+
 import Cart from "../../components/Cart";
+import { pageVariants } from "../../framer/animation";
+import useTransaction from "../../hooks/useTransaction";
+import { useEffect } from "react";
 
 const basketItems = [
   {
@@ -21,20 +25,32 @@ const basketItems = [
 ];
 
 const Liked = () => {
+  const { favouriteList, fetchFavouriteFoodList } = useTransaction();
+
+  useEffect(() => {
+    fetchFavouriteFoodList();
+  }, []);
   return (
-    <div className="min-h-screen mx-auto p-6 bg-white">
-      <h2 className="text-4xl font-bold mb-4 font-bebas">LIKED</h2>
-      {basketItems.map((item) => (
-        <Cart
-          id={item.id}
-          image={item.image}
-          name={item.name}
-          price={item.price}
-          quantity={item.quantity}
-          isLiked={true}
-        />
-      ))}
-    </div>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageVariants}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="min-h-screen mx-auto p-6 bg-white">
+        <h2 className="text-4xl font-bold mb-4 font-bebas">LIKED</h2>
+        {favouriteList.map((item) => (
+          <Cart
+            id={item.id}
+            image={item.picture}
+            name={item.name}
+            price={item.price}
+            isLiked={true}
+          />
+        ))}
+      </div>
+    </motion.div>
   )
 };
 

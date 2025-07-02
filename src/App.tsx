@@ -15,10 +15,15 @@ import Basket from "./pages/Basket";
 import Liked from "./pages/Liked";
 import Checkout from "./pages/Checkout";
 
-const isAuth = true;
+import { useAuth } from "./provider/AuthProvider";
+import Profile from "./pages/Profile";
+
+const isAuth = false;
 
 const AppRouter = () => {
   const location = useLocation();
+
+  const { user } = useAuth();
 
   let routesPath = [
     { path: '/', element: <GetStarted/> },
@@ -28,14 +33,15 @@ const AppRouter = () => {
     { path: '/login', element: <Login/> },
   ];
 
-  if (isAuth) {
+  if (user) {
     routesPath = [
-      { path: '/', element: <Home/> },
+      { path: '/home', element: <Home/> },
       { path: '/search', element: <SearchFood/> },
       { path: '/food-detail', element: <FoodDetail/> },
       { path: '/cart', element: <Basket/> },
       { path: '/liked', element: <Liked/> },
       { path: '/checkout', element: <Checkout/> },
+      { path: '/profile', element: <Profile/> },
     ];
   }
 
@@ -49,11 +55,14 @@ const AppRouter = () => {
 }
 
 function App() {
+  const { user } = useAuth();
+  console.log(user);
+
   return (
     <div className="max-w-[500px] mx-auto bg-white">
       <Router>
         <AppRouter/>
-        {isAuth ? (
+        {user ? (
           <div className="sticky bottom-0">
             <NavigationBar/>
           </div>
